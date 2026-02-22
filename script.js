@@ -1,6 +1,6 @@
 // Set the exact date and time we are counting down to
 // You can adjust the time (currently midnight) if you need to!
-const countDownDate = new Date("Feb 28, 2026 00:00:00").getTime();
+const countDownDate = new Date("Mar 1, 2026 00:00:00").getTime();
 let timerInterval;
 
 // Grab our HTML elements
