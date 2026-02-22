@@ -1,0 +1,419 @@
+/* =========================================
+   1. BASE STYLING & DARK TIMER BACKGROUND
+   ========================================= */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: transparent; 
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+#timer-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1; 
+    opacity: 0; 
+    transform: scale(0.8);
+    transition: opacity 1.5s ease-in-out, transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#timer-background.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#time-display {
+    font-size: 15vw; 
+    color: rgba(255, 255, 255, 0.15); 
+    font-weight: 900;
+    letter-spacing: 5px;
+    user-select: none; 
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+section {
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* =========================================
+   2. DARK HERO INVITATION SECTION
+   ========================================= */
+.hero {
+    color: white; 
+}
+
+.hero-content {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 60px 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: white;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 6px;
+    color: #f9d423; 
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.title .highlight {
+    color: #f9d423; 
+    font-size: 5.5rem;
+}
+
+.description {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.85); 
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+}
+
+.scroll-indicator {
+    margin-top: 30px;
+    opacity: 0.7;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator p {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+}
+
+.scroll-indicator .arrow {
+    font-size: 1.5rem;
+    display: block;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* =========================================
+   3. GALLERY STYLE INFO SECTION (WHITE)
+   ========================================= */
+/* =========================================
+   3. GALLERY STYLE INFO SECTION (WHITE)
+   ========================================= */
+.info-section {
+    background-color: #ffffff; 
+    color: #333333; 
+    min-height: auto; 
+    
+    /* THE FIX: Increased the top and bottom margin from 50px to 120px */
+    margin: 120px auto; 
+    
+    width: 90%;
+    max-width: 900px;
+    border-radius: 4px; 
+    padding: 60px; 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); 
+    border: 1px solid #f0f0f0; 
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+    text-align: left; 
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.info-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.split-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap; 
+}
+
+.location-text, .location-map {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Gallery Typography */
+.section-title {
+    color: #b8860b; /* Darker, richer gold for the white background */
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.venue-name {
+    font-size: 2.5rem;
+    margin: 0 0 25px 0;
+    line-height: 1.2;
+    color: #222; /* Almost black */
+    font-family: Georgia, 'Times New Roman', Times, serif; /* Elegant Serif font */
+}
+
+.event-details p {
+    font-size: 1.15rem;
+    color: #555; /* Medium gray */
+    margin: 12px 0;
+    line-height: 1.6;
+    border-bottom: 1px solid #eee; /* Subtle separator lines */
+    padding-bottom: 12px;
+}
+
+.event-details strong {
+    color: #222;
+    font-weight: 600;
+    margin-right: 10px;
+    font-family: Georgia, serif; /* Classy serif labels */
+}
+
+/* =========================================
+   4. GALLERY STYLE MAP INTERACTION
+   ========================================= */
+.map-link {
+    display: block;
+    position: relative;
+    border-radius: 4px; /* Matches the gallery card corners */
+    overflow: hidden; 
+    border: 3px solid #f9f9f9;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+}
+
+.static-map {
+    width: 100%;
+    height: 300px; /* Slightly taller for better gallery proportions */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease; 
+}
+
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85); /* Bright frosted overlay */
+    backdrop-filter: blur(3px); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; 
+    transition: opacity 0.4s ease;
+}
+
+.map-overlay span {
+    color: #b8860b; /* Dark gold text */
+    background: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    border: 2px solid #b8860b;
+    border-radius: 30px;
+    transform: translateY(20px); 
+    transition: transform 0.4s ease;
+    box-shadow: 0 5px 15px rgba(184, 134, 11, 0.2);
+}
+
+.map-link:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 20px 40px rgba(184, 134, 11, 0.15); /* Gold shadow */
+    border-color: #b8860b; 
+}
+
+.map-link:hover .static-map {
+    transform: scale(1.08); 
+}
+
+.map-link:hover .map-overlay {
+    opacity: 1; 
+}
+
+.map-link:hover .map-overlay span {
+    transform: translateY(0); 
+}
+
+/* =========================================
+   5. MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+    .title { font-size: 3rem; }
+    .title .highlight { font-size: 3.5rem; }
+    .hero-content { padding: 40px 20px; }
+    .venue-name { font-size: 2rem; }
+    .info-section { padding: 40px 25px; }
+}
+
+/* =========================================
+   4. GALLERY STYLE MAP (IFRAME)
+   ========================================= */
+.map-iframe {
+    width: 100%;
+    height: 350px; /* Gives the map a nice vertical height */
+    border: 3px solid #f9f9f9;
+    border-radius: 8px; /* Slightly rounded corners to match the gallery feel */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft shadow */
+    display: block;
+    transition: box-shadow 0.4s ease;
+}
+
+/* Optional: Add a subtle glow when they interact with the map */
+.map-iframe:hover {
+    box-shadow: 0 10px 25px rgba(184, 134, 11, 0.15); /* Gold shadow on hover */
+    border-color: #b8860b; 
+}
+
+/* Update your existing hero-content class to include position: relative and padding-top */
+.hero-content {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 80px 40px 60px 40px; /* INCREASED top padding to 80px so the image doesn't cover the text */
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 800px;
+    margin: 60px auto 0 auto; /* Added top margin so the overflowing image doesn't get cut off */
+    color: white;
+    
+    /* CRITICAL: This allows the image to position itself relative to this box */
+    position: relative; 
+}
+
+/* Add the new styling for the popping out image */
+.hero-top-image {
+    position: absolute;
+    width: 150px; /* You can adjust this size depending on your image */
+    
+    /* This negative value pulls the image UP by exactly half its height (assuming height is ~150px) */
+    top: -75px; 
+    
+    /* This centers the image perfectly in the middle of the card */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Optional: Adds a nice shadow to the image so it matches the card */
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+}
+
+/* =========================================
+   6. SPLIT LAYOUT FOR IMAGES & TEXT
+   ========================================= */
+
+/* Make sure the left text and right image take up equal space */
+.info-text, .info-image-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Style the image to match the gallery theme */
+.side-image {
+    width: 70%;
+    height: 70%;
+    min-height: 250px; /* Ensures it doesn't get too small */
+    object-fit: cover; /* Crops the image nicely without stretching it */
+    border-radius: 8px; /* Soft gallery corners */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft shadow */
+    border: 3px solid #f9f9f9; /* Subtle white border */
+    display: block;
+}
+
+/* =========================================
+   7. BALLOON BUTTON & ANIMATIONS
+   ========================================= */
+
+/* The Gold Button Styling */
+.gold-btn {
+    background: #b8860b; /* Deep Gold */
+    color: #ffffff;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(184, 134, 11, 0.3);
+    transition: all 0.3s ease;
+}
+
+.gold-btn:hover {
+    transform: translateY(-3px); /* Lifts up slightly on hover */
+    box-shadow: 0 12px 25px rgba(184, 134, 11, 0.5); /* Glows brighter */
+    background: #a07409;
+}
+
+/* The Base Balloon Styling */
+.balloon {
+    position: fixed;
+    bottom: -100px; /* Starts hidden below the screen */
+    width: 40px;
+    height: 55px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; /* Creates the classic balloon teardrop shape */
+    z-index: 9999; /* Ensures they float OVER everything else */
+    opacity: 0.9;
+    animation: floatUp linear forwards;
+}
+
+/* The little string attached to the balloon */
+.balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    width: 1px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* The animation that pushes them up the screen */
+@keyframes floatUp {
+    0% { 
+        transform: translateY(0) rotate(0deg); 
+    }
+    100% { 
+        /* Moves way above the screen and wobbles slightly */
+        transform: translateY(-120vh) rotate(15deg); 
+    }
+}
